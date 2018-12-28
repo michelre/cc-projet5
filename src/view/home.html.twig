@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+{% block body %}
+  <h1>Home</h1>
+  <h2>Test</h2>
+
+  <ul>
+    {% for event in events %}
+      <li>
+        <a href="/events/{{ event.id }}">{{ event.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

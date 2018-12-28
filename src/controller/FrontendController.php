@@ -7,16 +7,23 @@ use App\Dao\EventDao;
 class FrontendController
 {
     private $eventDao;
+    private $twig;
 
-    public function __construct()
+    /**
+     * FrontendController constructor.
+     * @param \Twig_Environment $twig
+     */
+    public function __construct($twig)
     {
         $this->eventDao = new EventDao();
+        $this->twig = $twig;
     }
 
 
     public function index()
     {
-        return 'HOME';
+        $events = $this->eventDao->findEvents();
+        return $this->twig->render('home.html.twig', ['events' => $events]);
     }
 
     public function events()

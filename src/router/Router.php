@@ -10,10 +10,10 @@ class Router
     private $klein;
     private $frontendController;
 
-    public function __construct()
+    public function __construct($twig)
     {
         $this->klein = new Klein();
-        $this->frontendController = new FrontendController();
+        $this->frontendController = new FrontendController($twig);
     }
 
     public function run()
